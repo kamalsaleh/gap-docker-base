@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:latest
 
 MAINTAINER The GAP Group <support@gap-system.org>
 
