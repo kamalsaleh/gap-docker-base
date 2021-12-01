@@ -44,7 +44,9 @@ RUN    dpkg --add-architecture i386 \
             texlive-latex-extra \
             texlive-fonts-extra \
             texlive-science \
-    && ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
+            python-is-python3 \
+            vim \
+    && ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
 RUN pip3 install notebook jupyterlab_launcher jupyterlab traitlets ipython vdom
 
