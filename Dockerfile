@@ -124,7 +124,8 @@ RUN    cd /opt \
 # Pari/GP
 ENV PARI_VERSION 2.9.5
 RUN    cd /tmp/ \
-    && wget https://pari.math.u-bordeaux.fr/pub/pari/OLD/2.9/pari-${PARI_VERSION}.tar.gz \
+    # the https version uses a certificate not trusted by wget
+    && wget http://pari.math.u-bordeaux.fr/pub/pari/OLD/2.9/pari-${PARI_VERSION}.tar.gz \
     && tar -xf pari-${PARI_VERSION}.tar.gz \
     && rm pari-${PARI_VERSION}.tar.gz \
     && cd pari-${PARI_VERSION} \
