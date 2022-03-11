@@ -50,6 +50,7 @@ RUN    dpkg --add-architecture i386 \
             texlive-science \
             python-is-python3 \
             vim \
+            gnupg \
     && ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
 RUN pip3 install notebook jupyterlab_launcher jupyterlab traitlets ipython vdom
