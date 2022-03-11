@@ -4,6 +4,10 @@ MAINTAINER The GAP Group <support@gap-system.org>
 
 ENV DEBIAN_FRONTEND noninteractive
 
+# never install suggests or recommends to make the image smaller
+RUN echo 'APT::Install-Suggests "0";' >> /etc/apt/apt.conf
+RUN echo 'APT::Install-Recommends "0";' >> /etc/apt/apt.conf
+
 # Prerequisites
 RUN    dpkg --add-architecture i386 \
     && apt-get update -qq \
@@ -138,6 +142,8 @@ RUN    echo "deb http://www.math.uiuc.edu/Macaulay2/Repositories/Ubuntu $(lsb_re
     && apt-key add Macaulay2-key \
     && apt-get update -qq \
     && apt-get -qq install -y macaulay2
+
+RUN rm -r /tmp/*
 
 ENV LD_LIBRARY_PATH /usr/local/lib:${LD_LIBRARY_PATH}
 
