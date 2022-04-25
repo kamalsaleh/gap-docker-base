@@ -146,7 +146,7 @@ RUN    adduser --quiet --shell /bin/bash --gecos "GAP user,101,," --disabled-pas
 
 # Macaulay2
 RUN    . /etc/lsb-release \
-    && echo "deb http://www.math.uiuc.edu/Macaulay2/Repositories/Ubuntu $DISTRIB_CODENAME main" >/etc/apt/sources.list.d/macaulay2.list \
+    && echo "deb http://www.math.uiuc.edu/Macaulay2/Repositories/Ubuntu focal main" >/etc/apt/sources.list.d/macaulay2.list \
     && wget http://www2.macaulay2.com/Macaulay2/PublicKeys/Macaulay2-key \
     && apt-key add Macaulay2-key \
     && apt-get update -qq \
