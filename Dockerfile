@@ -58,6 +58,7 @@ RUN    dpkg --add-architecture i386 \
             singular \
             libnormaliz-dev \
             zip \
+            time \
     && ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
 #RUN pip3 install notebook jupyterlab_launcher jupyterlab traitlets ipython vdom
