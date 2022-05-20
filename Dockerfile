@@ -59,6 +59,8 @@ RUN    dpkg --add-architecture i386 \
             libnormaliz-dev \
             zip \
             time \
+            jupyter-notebook \
+            jupyter-nbconvert \
     && ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
 #RUN pip3 install notebook jupyterlab_launcher jupyterlab traitlets ipython vdom
@@ -165,6 +167,15 @@ ENV HOME /home/gap
 # See docker issue 2637: https://github.com/docker/docker/issues/2637
 # Start at $HOME.
 WORKDIR /home/gap
+
+RUN mkdir -p inst/julia-master && curl https://julialangnightlies-s3.julialang.org/bin/linux/x64/julia-latest-linux64.tar.gz | tar -xvz --strip-components=1 -C inst/julia-master
+
+ENV PATH /home/gap/inst/julia-master/bin:${PATH}
+
+COPY clean_gap_packages.sh /home/gap/clean_gap_packages.sh
+
+# installation and cleaning has to happen in the some step or we will not get any saving due to the layering system
+RUN julia -e 'using Pkg; Pkg.add("IJulia"); Pkg.add("CapAndHomalg");'; bash clean_gap_packages.sh
 
 # Start from a BASH shell.
 CMD ["bash"]
