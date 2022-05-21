@@ -168,7 +168,7 @@ ENV HOME /home/gap
 # Start at $HOME.
 WORKDIR /home/gap
 
-RUN mkdir -p inst/julia-master && curl https://julialangnightlies-s3.julialang.org/bin/linux/x64/julia-latest-linux64.tar.gz | tar -xvz --strip-components=1 -C inst/julia-master
+RUN mkdir -p inst/julia-master && curl -L https://julialangnightlies-s3.julialang.org/bin/linux/x64/julia-latest-linux64.tar.gz | tar -xvz --strip-components=1 -C inst/julia-master
 
 ENV PATH /home/gap/inst/julia-master/bin:${PATH}
 
