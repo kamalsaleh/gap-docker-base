@@ -24,6 +24,7 @@ mv bak/irredsol-* $gap_packages_artifact_hash
 mv bak/laguna-* $gap_packages_artifact_hash
 mv bak/polenta-* $gap_packages_artifact_hash
 mv bak/polycyclic-* $gap_packages_artifact_hash
+mv bak/repsn-* $gap_packages_artifact_hash # needed by GroupRepresentationsForCAP
 mv bak/resclasses-* $gap_packages_artifact_hash
 mv bak/sophus-* $gap_packages_artifact_hash
 mv bak/tomlib-* $gap_packages_artifact_hash
