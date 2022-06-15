@@ -63,6 +63,11 @@ RUN    dpkg --add-architecture i386 \
             jupyter-nbconvert \
     && ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
+RUN    curl -L https://download.arangodb.com/arangodb39/DEBIAN/Release.key | gpg --dearmor > /etc/apt/trusted.gpg.d/arangodb.gpg \
+    && echo 'deb https://download.arangodb.com/arangodb39/DEBIAN/ /' > /etc/apt/sources.list.d/arangodb.list \
+    && apt-get update \
+    && apt-get install arangodb3-client
+
 #RUN pip3 install notebook jupyterlab_launcher jupyterlab traitlets ipython vdom
 
 # add gap user
