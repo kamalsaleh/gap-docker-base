@@ -22,8 +22,7 @@ RUN    dpkg --add-architecture i386 \
             gcc \
             #gcc-multilib \
             git \
-            # needed for NormalizInterface with GAP 4.11.1
-            libboost-dev \
+            #libboost-dev \
             libcdd-dev \
             libcurl4-openssl-dev \
             #libflint-dev \
