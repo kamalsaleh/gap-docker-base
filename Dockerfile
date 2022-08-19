@@ -60,6 +60,8 @@ RUN    dpkg --add-architecture i386 \
             time \
             jupyter-notebook \
             jupyter-nbconvert \
+            # needed for getprotobyname used in IO_socket in IO, used for SingleHTTPRequest
+            netbase \
     && ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
 RUN    curl -L https://download.arangodb.com/arangodb39/DEBIAN/Release.key | gpg --dearmor > /etc/apt/trusted.gpg.d/arangodb.gpg \
