@@ -1,7 +1,5 @@
 FROM ubuntu:latest
 
-MAINTAINER The GAP Group <support@gap-system.org>
-
 ENV DEBIAN_FRONTEND noninteractive
 
 # never install suggests or recommends to make the image smaller
