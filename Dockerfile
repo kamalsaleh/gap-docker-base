@@ -69,8 +69,9 @@ RUN    curl -L https://download.arangodb.com/arangodb39/DEBIAN/Release.key | gpg
 
 #RUN pip3 install notebook jupyterlab_launcher jupyterlab traitlets ipython vdom
 
-# add gap user
-RUN    adduser --quiet --shell /bin/bash --gecos "GAP user,101,," --disabled-password gap \
+# add gap user, use uid and gid used by GitHub Actions
+RUN    addgroup --quiet --gid 121 gap \
+    && adduser --quiet --shell /bin/bash --gecos "GAP user,101,," --disabled-password --uid 1001 --gid 121 gap \
     && adduser gap sudo \
     && chown -R gap:gap /home/gap/ \
     && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers \
