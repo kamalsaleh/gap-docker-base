@@ -28,6 +28,7 @@ mv bak/repsn-* $gap_packages_artifact_hash # needed by GroupRepresentationsForCA
 mv bak/resclasses-* $gap_packages_artifact_hash
 mv bak/sophus-* $gap_packages_artifact_hash
 mv bak/tomlib-* $gap_packages_artifact_hash
+mv bak/utils-* $gap_packages_artifact_hash # needed since GAP.jl commit 36d2092d225905e4dfc99d72725fd141be6bcf32
 mv bak/PackageManager-* $gap_packages_artifact_hash
 
 rm -rf bak
