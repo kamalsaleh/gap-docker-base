@@ -184,7 +184,8 @@ ENV PATH /home/gap/inst/julia-master/bin:${PATH}
 COPY clean_gap_packages.sh /home/gap/clean_gap_packages.sh
 
 # installation and cleaning has to happen in the some step or we will not get any saving due to the layering system
-RUN julia -e 'using Pkg; Pkg.add("IJulia"); Pkg.add("CapAndHomalg");'; bash clean_gap_packages.sh
+# use CPU target "generic" to avoid recompilation on different x86_64 CPUs
+RUN julia --cpu-target "generic" -e 'using Pkg; Pkg.add("IJulia"); Pkg.add("CapAndHomalg");'; bash clean_gap_packages.sh
 
 # Start from a BASH shell.
 CMD ["bash"]
