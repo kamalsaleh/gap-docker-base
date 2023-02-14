@@ -167,6 +167,10 @@ RUN    addgroup --quiet --gid 121 gap \
 
 #ENV LD_LIBRARY_PATH /usr/local/lib:${LD_LIBRARY_PATH}
 
+# use bash instead of dash for sh
+# /usr/lib/git-core/git-subtree uses sh and fails with "Maximum function recursion depth (1000) reached" for large projects when using dash
+RUN echo "dash dash/sh boolean false" | debconf-set-selections && DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
+
 # Set up new user and home directory in environment.
 USER gap
 ENV HOME /home/gap
