@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+ENV LANG C.UTF-8
+
 ENV DEBIAN_FRONTEND noninteractive
 
 # never install suggests or recommends to make the image smaller
