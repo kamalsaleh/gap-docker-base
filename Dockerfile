@@ -183,8 +183,7 @@ WORKDIR /home/gap
 # create GAP user root
 RUN mkdir -p .gap/pkg
 
-# use Julia 1.9 until https://github.com/JuliaPackaging/Yggdrasil/pull/6999 is merged
-RUN mkdir -p inst/julia-master && curl -L https://julialang-s3.julialang.org/bin/linux/x64/1.9/julia-1.9.0-rc3-linux-x86_64.tar.gz | tar -xvz --strip-components=1 -C inst/julia-master
+RUN mkdir -p inst/julia-master && curl -L https://julialangnightlies-s3.julialang.org/bin/linux/x64/julia-latest-linux64.tar.gz | tar -xvz --strip-components=1 -C inst/julia-master
 
 ENV PATH /home/gap/inst/julia-master/bin:${PATH}
 
