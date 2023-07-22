@@ -191,8 +191,7 @@ COPY clean_gap_packages.sh /home/gap/clean_gap_packages.sh
 
 # installation and cleaning has to happen in the some step or we will not get any saving due to the layering system
 # use CPU target "generic" to avoid recompilation on different x86_64 CPUs
-# downgrade GAP.jl until https://github.com/oscar-system/GAP.jl/issues/923 is fixed
-RUN julia --cpu-target "generic" -e 'using Pkg; Pkg.add("IJulia"); Pkg.add(url = "https://github.com/oscar-system/GAP.jl", rev="a30cb13feb1d5d7dbf53d92723cd6cbdb3991ee5"); Pkg.add("CapAndHomalg");'; bash clean_gap_packages.sh
+RUN julia --cpu-target "generic" -e 'using Pkg; Pkg.add("IJulia"); Pkg.add(url = "https://github.com/oscar-system/GAP.jl"); Pkg.add("CapAndHomalg");'; bash clean_gap_packages.sh
 
 # Start from a BASH shell.
 CMD ["bash"]
