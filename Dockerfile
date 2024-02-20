@@ -183,7 +183,8 @@ WORKDIR /home/gap
 # create GAP user root
 RUN mkdir -p .gap/pkg
 
-RUN mkdir -p inst/julia-master && curl -L https://julialangnightlies-s3.julialang.org/bin/linux/x64/julia-latest-linux64.tar.gz | tar -xvz --strip-components=1 -C inst/julia-master
+# use julia-1.10 until GAP.jl complies with the current julia:master (Version 1.12.0-DEV.18 (2024-02-19))
+RUN mkdir -p inst/julia-master && curl -L https://julialang-s3.julialang.org/bin/linux/x64/1.10/julia-1.10.0-linux-x86_64.tar.gz | tar -xvz --strip-components=1 -C inst/julia-master
 
 ENV PATH /home/gap/inst/julia-master/bin:${PATH}
 
