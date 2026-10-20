@@ -221,7 +221,9 @@ RUN git clone https://github.com/homalg-project/MatricesForHomalg.jl .julia/dev/
 RUN julia --cpu-target "generic" -e 'using Pkg; Pkg.add("IJulia"); Pkg.build("IJulia"); using IJulia;'
 #RUN julia --cpu-target "generic" -e 'using Pkg; Pkg.develop("GAP"); Pkg.build("GAP"); using GAP;'
 RUN julia --cpu-target "generic" -e 'using Pkg; Pkg.develop("CapAndHomalg"); Pkg.build("CapAndHomalg"); using CapAndHomalg;'
-RUN julia --cpu-target "generic" -e 'using Pkg; Pkg.add("JSON3"); Pkg.build("JSON3"); using JSON3;'
+# The current stable Julia release, v1.13.2, contains a bug that causes JSON3 installation to fail.
+# Remove JULIA_PKG_PRECOMPILE_AUTO=0 once the stable release includes the fix.
+RUN JULIA_PKG_PRECOMPILE_AUTO=0 julia --cpu-target "generic" -e 'using Pkg; Pkg.add("JSON3"); Pkg.build("JSON3"); using JSON3;'
 RUN julia --cpu-target "generic" -e 'using Pkg; Pkg.add("Nemo"); Pkg.build("Nemo"); using Nemo;'
 RUN julia --cpu-target "generic" -e 'using Pkg; Pkg.add("AbstractAlgebra"); Pkg.build("AbstractAlgebra"); using AbstractAlgebra;'
 RUN julia --cpu-target "generic" -e 'using Pkg; Pkg.develop("MatricesForHomalg"); Pkg.build("MatricesForHomalg"); using MatricesForHomalg;'
