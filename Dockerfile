@@ -196,7 +196,7 @@ RUN mkdir -p .gap/pkg
 # get julia using the official installation script. Replace nightly by release to get the latest stable version
 RUN curl -fsSL https://install.julialang.org | sh -s -- \
     --yes \
-    --default-channel nightly \
+    --default-channel release \
     --add-to-path=no \
     --startup-selfupdate=0
 
